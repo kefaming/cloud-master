@@ -18,9 +18,9 @@ public class HelloController {
 
     @RequestMapping(value="/selectById/{id}", method = RequestMethod.GET)
     public String selectById(@PathVariable("id") String id) {
-        if(1 > 0){
-            throw new BizException(9, "自定义异常信息");
-        }
+//        if(1 > 0){
+//            throw new BizException(9, "自定义异常信息");
+//        }
         String name = userService.selectById(id);
         return name;
     }
