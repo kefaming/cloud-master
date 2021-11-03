@@ -15,8 +15,10 @@
     <version>1.0-SNAPSHOT</version>
 
     <modules>
+        <module>cloud-gateway</module>
         <module>cloud-user</module>
         <module>cloud-admin</module>
+        <module>cloud-common</module>
     </modules>
 
     <properties>
