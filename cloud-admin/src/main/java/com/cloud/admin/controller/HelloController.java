@@ -1,29 +1,27 @@
 package com.cloud.admin.controller;
 
 import com.cloud.admin.entity.User;
+import com.cloud.admin.exception.BizException;
 import com.cloud.admin.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.web.bind.annotation.RestController;
 
 
 @Slf4j
 @RestController
 public class HelloController {
-
-    @Value("${user.name}")
-    String userName;
-
     @Autowired
-    private UserService userService1;
+    private UserService userService;
 
-    @RequestMapping("/selectById")
-    public String selectById(@RequestBody String id) {
-        String name = userService1.selectById(id);
+    @RequestMapping(value="/selectById/{id}", method = RequestMethod.GET)
+    public String selectById(@PathVariable("id") String id) {
+        if(1 > 0){
+            throw new BizException(9, "自定义异常信息");
+        }
+        String name = userService.selectById(id);
         return name;
     }
 }

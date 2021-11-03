@@ -8,7 +8,7 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 
 @EnableDiscoveryClient
 @SpringBootApplication
-@EnableFeignClients
+@EnableFeignClients(basePackages = "com.cloud.user.client")
 @MapperScan("com.cloud.user.mapper")
 public class CloudUserApplication {
 
@@ -17,3 +17,4 @@ public class CloudUserApplication {
     }
 
 }
+

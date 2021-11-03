@@ -4,6 +4,7 @@ import com.cloud.user.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.annotation.Resource;
@@ -22,8 +23,8 @@ public class HelloController {
     @Resource
     private UserService userService;
 
-    @RequestMapping("/hello")
-    public String hello(Map<String, Object> map, @Param(value="id") String id) {
+    @RequestMapping("/hello/{id}")
+    public String hello(Map<String, Object> map, @PathVariable("id") String id) throws InterruptedException {
         System.out.println(("----- selectById method test ------"));
 //        List<User> userList = userService.selectList();
 ////        List<User> userList = userMapper.selectList(null);
