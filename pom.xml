@@ -18,7 +18,7 @@
         <module>cloud-gateway</module>
         <module>cloud-user</module>
         <module>cloud-admin</module>
-        <module>cloud-common</module>
+        <module>cloud-core</module>
     </modules>
 
     <properties>

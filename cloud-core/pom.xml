@@ -10,10 +10,10 @@
         <relativePath>../pom.xml</relativePath>
     </parent>
     <groupId>com.cloud</groupId>
-    <artifactId>cloud-common</artifactId>
+    <artifactId>cloud-core</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>cloud-common</name>
-    <description>Common</description>
+    <name>cloud-core</name>
+    <description>Core</description>
     <packaging>pom</packaging>
 
     <dependencies>
