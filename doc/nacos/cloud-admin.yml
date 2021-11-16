@@ -27,7 +27,7 @@ spring:
     driver-class-name: com.mysql.jdbc.Driver
     password: 1234
     type: com.alibaba.druid.pool.DruidDataSource
-    url: jdbc:mysql://127.0.0.1:3307/admin
+    url: jdbc:mysql://127.0.0.1:3307/admin?useUnicode=true&characterEncoding=UTF-8&serverTimezone=GMT%2B8&useSSL=true
     username: root
   mvc:
     static-path-pattern: /static/**
@@ -36,3 +36,6 @@ spring:
     suffix: .html
 user:
   name: 李四
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
