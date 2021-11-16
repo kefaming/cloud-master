@@ -4,10 +4,15 @@ import com.cloud.admin.entity.User;
 import com.cloud.admin.exception.BizException;
 import com.cloud.admin.service.UserService;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import org.springframework.beans.factory.annotation.Value;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 
 @Slf4j
@@ -24,4 +29,14 @@ public class HelloController {
         String name = userService.selectById(id);
         return name;
     }
+
+    @RequestMapping(value="/selectList", method = RequestMethod.GET)
+    public Map<String, Object> selectList(@Param("pageNo") Integer pageNo) {
+        List<User> list = userService.selectList();
+        Map<String, Object> map = new HashMap<>();
+        map.put("list", list);
+        map.put("pageTotal", list.size());
+        return map;
+    }
+
 }

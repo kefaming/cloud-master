@@ -17,7 +17,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public List<User> selectList() {
         QueryWrapper<User> wrapper = new QueryWrapper();
-        wrapper.like("name", "雨").lt("age", 40);
+//        wrapper.like("name", "雨").lt("age", 40);
         return userMapper.selectList(wrapper);
     }
 
