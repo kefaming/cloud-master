@@ -1,11 +1,13 @@
 package com.cloud.admin.entity;
 
 import com.baomidou.mybatisplus.annotation.TableName;
+import lombok.Builder;
 import lombok.Data;
 
 import java.util.Date;
 
 @Data
+@Builder
 @TableName(value = "user")
 public class User {
     private Long id;
