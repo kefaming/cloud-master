@@ -1,0 +1,58 @@
+feign:
+  client:
+    config:
+      default:
+        connectTimeout: 5000
+        readTimeout: 5000
+  compression:
+    request:
+      enabled: true
+      mime-types: text/xml,application/xml,application/json
+      min-request-size: 2048
+    response:
+      enabled: true
+  hystrix:
+    command:
+      default:
+        execution:
+          timeout:
+            enabled: true
+    enabled: true
+logging:
+  file:
+    path: ./logs
+  level:
+    com:
+      cloud:
+        user: debug
+    root: info
+server:
+  port: 18081
+spring:
+  application:
+    name: cloud-user
+  cloud:
+    nacos:
+      config:
+        enabled: true
+        file-extension: yaml
+        group: DEFAULT_GROUP
+        namespace: public
+        refresh-enabled: true
+        server-addr: http://localhost:8848
+      discovery:
+        namespace: public
+        server-addr: 127.0.0.1:8848
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    password: 1234
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://127.0.0.1:3307/admin
+    username: root
+  mvc:
+    static-path-pattern: /static/**
+  thymeleaf:
+    prefix: classpath:/templates/
+    suffix: .html
+user:
+  name: 张三
