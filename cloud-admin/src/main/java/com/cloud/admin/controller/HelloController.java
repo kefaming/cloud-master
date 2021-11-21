@@ -1,13 +1,16 @@
 package com.cloud.admin.controller;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.cloud.admin.entity.User;
 import com.cloud.admin.exception.BizException;
 import com.cloud.admin.mapper.UserMapper;
 import com.cloud.admin.service.UserService;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.ibatis.annotations.Param;
 import org.json.JSONObject;
+import org.mockito.internal.util.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,8 +27,8 @@ import java.util.Map;
 @Slf4j
 @RestController
 public class HelloController {
-    @Autowired
-    private UserService userService;
+//    @Autowired
+//    private UserService userService;
 
     @Resource
     private UserMapper userMapper;
@@ -35,13 +38,17 @@ public class HelloController {
 //        if(1 > 0){
 //            throw new BizException(9, "自定义异常信息");
 //        }
-        String name = userService.selectById(id);
-        return name;
+        User user = userMapper.selectById(id);
+        return user.getName();
     }
 
-    @RequestMapping(value="/selectList", method = RequestMethod.GET)
-    public Map<String, Object> selectList(@Param("pageNo") Integer pageNo) {
-        List<User> list = userService.selectList();
+    @RequestMapping(value="/selectList", method = RequestMethod.POST)
+    public Map<String, Object> selectList(@Param("pageNo") Integer pageNo, @Param("address") String address) {
+        QueryWrapper wrapper = new QueryWrapper();
+        if(StringUtils.isNoneEmpty(address)){
+            wrapper.like("address", address);
+        }
+        List<User> list = userMapper.selectList(wrapper);
         Map<String, Object> map = new HashMap<>();
         map.put("list", list);
         map.put("pageTotal", list.size());
